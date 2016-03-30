@@ -34,15 +34,11 @@ describe Admin::CategoriesController do
     end
   end
 
-  describe "test_new" do
-    before(:each) do
+  describe "#new" do
+    it 'should render new category template' do
       get :new
-    end
-
-    it 'should render template new' do
-      assert_template 'new'
-      assert_tag :tag => "table",
-        :attributes => { :id => "category_container" }
+      expect(response.status).to eq 200
+      response.should render_template :new
     end
   end
 
